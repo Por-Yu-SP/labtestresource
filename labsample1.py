@@ -15,8 +15,15 @@ import csv
 ##########################################################
 def get_longest_workout(workouts):
     longest = None
-
+    temp=0
+    if len(workouts) == 0:
+        return longest
     # Add your implementation from here
+    for item in workouts:
+        print(item["duration"])
+        if item["duration"]>temp:
+            longest=item
+            temp=item["duration"]
     #HINT: Loop through workouts and compare durations
 
 
@@ -35,7 +42,8 @@ def calc_total_duration(workouts):
 
     # Add your implementation from here
     #HINT: start with this code: for workout in workouts:
-
+    for item in workouts:
+        total+=item["duration"]
 
     return total
 
@@ -49,10 +57,10 @@ def calc_total_duration(workouts):
 ##################################################################
 def calc_average_duration(workouts):
     average = 0
-
+    total = calc_total_duration(workouts)
     # Add your implementation from here
     #HINT: Use calc_total_duration(workouts) and len(workouts)
-
+    average=total/len(workouts)
 
     return average
 
@@ -170,7 +178,7 @@ def main():
 
             if longest:
                 print("\nLongest Workout")
-                print("=" * 50)
+                print("=" * 50)     
                 print(f"Date: {longest['date']}")
                 print(f"Activity: {longest['activity']}")
                 print(f"Duration: {longest['duration']:.0f} minutes")
